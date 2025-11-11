@@ -1,10 +1,16 @@
 import { useState, useRef, useEffect } from 'react'
 import './App.css'
+import AgentConfig from './AgentConfig'
 
 function App() {
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [agentConfig, setAgentConfig] = useState({
+    role: '친절한 AI 어시스턴트',
+    goal: '사용자의 질문에 정확하고 도움이 되는 답변을 제공합니다',
+    outputFormat: 'Text'
+  })
   const messagesEndRef = useRef(null)
 
   // 메시지 추가 시 자동 스크롤
@@ -15,6 +21,11 @@ function App() {
   useEffect(() => {
     scrollToBottom()
   }, [messages])
+
+  // Agent 적용
+  const handleApplyAgent = () => {
+    setMessages([])
+  }
 
   // 메시지 전송
   const sendMessage = async (e) => {
@@ -30,13 +41,16 @@ function App() {
     setIsLoading(true)
 
     try {
-      // API 호출
+      // API 호출 (Agent 설정 포함)
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: userMessage }),
+        body: JSON.stringify({
+          message: userMessage,
+          agentConfig: agentConfig
+        }),
       })
 
       const data = await response.json()
@@ -80,9 +94,16 @@ function App() {
         {/* 헤더 */}
         <div className="chat-header">
           <h1>🤖 OpenAI 챗봇</h1>
-          <button onClick={resetChat} className="reset-button">
-            새로운 대화
-          </button>
+          <div className="header-buttons">
+            <AgentConfig
+              agentConfig={agentConfig}
+              setAgentConfig={setAgentConfig}
+              onApply={handleApplyAgent}
+            />
+            <button onClick={resetChat} className="reset-button">
+              새로운 대화
+            </button>
+          </div>
         </div>
 
         {/* 메시지 영역 */}

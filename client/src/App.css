@@ -34,6 +34,12 @@
   font-weight: 600;
 }
 
+.header-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
 .reset-button {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);

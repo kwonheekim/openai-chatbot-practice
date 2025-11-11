@@ -1,0 +1,192 @@
+.agent-config-container {
+  position: relative;
+}
+
+.config-toggle-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.config-toggle-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.config-panel {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 400px;
+  max-width: 90vw;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.config-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  background: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.config-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 18px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.close-button:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.config-section {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.config-section:last-of-type {
+  border-bottom: none;
+}
+
+.config-section label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.config-hint {
+  margin: 8px 0 0 0;
+  font-size: 12px;
+  color: #999;
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.preset-button {
+  padding: 10px;
+  background: #f5f5f5;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.preset-button:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.config-input,
+.config-textarea,
+.config-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.config-input:focus,
+.config-textarea:focus,
+.config-select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.config-textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.apply-button {
+  width: calc(100% - 40px);
+  margin: 20px;
+  padding: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.apply-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* 스크롤바 스타일 */
+.config-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.config-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.config-panel::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.config-panel::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .config-panel {
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 60px;
+  }
+}
